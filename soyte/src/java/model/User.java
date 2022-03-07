@@ -5,7 +5,7 @@
  */
 package model;
 
-import dal.UserDAO;
+import dal.UserDBContext;
 
 /**
  *
@@ -82,9 +82,5 @@ public class User {
     @Override
     public String toString() {
         return "User{" + "id=" + id + ", role_id=" + role_id + ", email=" + email + ", password=" + password + ", active=" + active + ", OTP=" + OTP + '}';
-    }
-    
-    public static void main(String[] args) {
-        System.out.println(new UserDAO().getUsers());
     }
 }

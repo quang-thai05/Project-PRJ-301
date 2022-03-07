@@ -3,23 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control;
+package controller;
 
-import dal.UserDAO;
+import dal.SendMail;
+import dal.UserDBContext;
+import dal.UserDetailDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.User;
+import model.UserDetail;
 
 /**
  *
  * @author quangthai
  */
-public class LoginController extends HttpServlet {
+
+public class RegisterController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,7 +50,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/login.jsp").forward(request, response);
+        request.getRequestDispatcher("view/register.jsp").forward(request, response);
     }
 
     /**
@@ -61,22 +64,52 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String type = request.getParameter("type");
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
-        
-        UserDAO userDao = new UserDAO();
-        List<User> userList = userDao.getUsers();
+        String repass = request.getParameter("repass");
+        String error = "";
+        UserDBContext uDAO = new UserDBContext();
+        UserDetailDBContext udDAO = new UserDetailDBContext();
+        User u = uDAO.getUserByEmail(email);
+        SendMail sm = new SendMail();
 
-        
-        for(User u : userList){
-            if(u.getEmail().equals(email)){
-                if(u.getPassword().equals(pass)){
-                    //pending update
-                    response.sendRedirect("home");
+        if (u != null) {
+            error = "This email has been use, please enter again!";
+            request.setAttribute("er", error);
+            request.getRequestDispatcher("view/register.jsp").forward(request, response);
+        } else {
+            if (!pass.equals(repass)) {
+                error = "Confirm password fail, please enter again!";
+                request.setAttribute("er", error);
+                request.getRequestDispatcher("view/register.jsp").forward(request, response);
+            } else {
+                User user = new User();
+                user.setEmail(email);
+                user.setPassword(pass);
+                if (type.equals("admin") || type.equals("doctor")) {
+                    user.setActive(false);
+                    if (type.equals("admin")) {
+                        user.setRole_id(1);
+                    } else {
+                        user.setRole_id(2);
+                    }
+                    user.setOTP(uDAO.generateOTP());
+                    sm.sentEmail(email, "Nghe An health service department", "Your OTP is: " + user.getOTP());
+                } else {
+                    user.setActive(true);
+                    user.setRole_id(3);
                 }
+                uDAO.createUser(user);
+                udDAO.createUserDetail(new UserDetail());
+            }
+            request.setAttribute("email", email);
+            if(type.equals("patient")){
+                request.getRequestDispatcher("view/login.jsp").forward(request, response);
+            }else{
+                request.getRequestDispatcher("view/active.jsp").forward(request, response);
             }
         }
-        response.getWriter().print("user not found");
     }
 
     /**

@@ -3,20 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control;
+package controller;
 
+import dal.UserDBContext;
+import dal.UserDetailDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.User;
 
 /**
  *
- * @author quangthai
+ * @author quang
  */
-public class HomeController extends HttpServlet {
+public class ActiveController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,7 +47,9 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/home.jsp").forward(request, response);
+        String error = "Your account hasn't active yet, please enter OTP in email to active!";
+        request.setAttribute("er", error);
+        request.getRequestDispatcher("view/active.jsp").forward(request, response);
     }
 
     /**
@@ -58,7 +63,28 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String email = request.getParameter("email");
+        String OTP = request.getParameter("otp");
+        String error = "";
+
+        UserDBContext uDAO = new UserDBContext();
+        User user = uDAO.getUserByEmail(email);
+        if (user != null) {
+            if (OTP.equals(user.getOTP())) {
+                uDAO.active(user.getId());
+                error = "Active successful!";
+                request.setAttribute("er", error);
+                request.getRequestDispatcher("view/active.jsp").forward(request, response);
+            } else {
+                error = "OTP is wrong!";
+                request.setAttribute("er", error);
+                request.getRequestDispatcher("view/active.jsp").forward(request, response);
+            }
+        } else {
+            error = "User not found!";
+            request.setAttribute("er", error);
+            request.getRequestDispatcher("view/active.jsp").forward(request, response);
+        }
     }
 
     /**

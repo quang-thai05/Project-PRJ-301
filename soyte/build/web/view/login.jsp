@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : Feb 17, 2022, 7:11:24 PM
-    Author     : hoanganhPC
+    Author     : quangthai
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,8 +15,7 @@
             body{
                 height: 97vh;
                 width: 98vw;
-                background-image:linear-gradient(
-140deg, #EADEDB 0%, #BC70A4 50%, #BFD641 75%);
+                background-color: #0071d1;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -60,6 +59,7 @@
                 height: 30px;
                 width: 80px;
                 background-color: rgb(66, 66, 247);
+                margin-left: 120px;
             }
             button:hover{
                 background-color: rgb(157, 157, 197);
@@ -80,29 +80,27 @@
         </style>
     </head>
     <body>
-        <form method="post" action="login">
             <div class="frame" >
+                  <form method="post" action="login">
                 <table>
                     <tr >
-                        <td><h2>User name:</h2></td>
-                        <td><input name="email" id="user" type="text"/></td>
+                        <td><h2>Email</h2></td>
+                        <td><input name="email" id="user" type="text" value="${requestScope.email}"/></td>
                     </tr>  
                     <tr>
-                        <td><h2>Password:</h2></td>
+                        <td><h2>Password</h2></td>
                         <td><input id="pass" name="pass" type="password"/></td>
                     </tr>
                 </table>
+                <input type="submit" value="LOGIN">
                 <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er!=null}">${requestScope.er}</c:if></p>
-                <nav style="display: flex;width: 250px;padding-top: 20px;margin-left: 26%;">
-                    <input type="submit" value="LOGIN">
-                    <button>REGISTER</button>
-                    
-                </nav>
+                 <nav style="display: flex;width: 250px;padding-top: 20px;margin-left: 26%;"></nav>
+                   </form>
+                 <a href="register"><button>REGISTER</button></a>
                 <nav style="display: flex;width: 400px;padding-top: 20px;margin-left: 26%;">
-                <a href="redeem.jsp">Forgot password</a>
-                <a href="#" style="margin-left: 60px;">change password</a></nav>
+                 <a href="/forgot">Forgot password</a>
+                <a href="/change" style="margin-left: 60px;">change password</a></nav>
             </div>
-            </form>
     </body>
 </html>
 

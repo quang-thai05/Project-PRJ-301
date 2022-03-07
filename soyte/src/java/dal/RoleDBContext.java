@@ -16,7 +16,7 @@ import model.Role;
  *
  * @author quangthai
  */
-public class RoleDAO extends DBContext{
+public class RoleDBContext extends DBContext{
     public List<Role> getRoles(){
         List<Role> roleList = new ArrayList<>();
         try {
@@ -36,6 +36,6 @@ public class RoleDAO extends DBContext{
     }
     
     public static void main(String[] args) {
-        System.out.println(new RoleDAO().getRoles());
+        System.out.println(new RoleDBContext().getRoles());
     }
 }

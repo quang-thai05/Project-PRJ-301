@@ -81,22 +81,34 @@
     </head>
     <body>
             <div class="frame" >
-                  <form method="post" action="login">
+                  <form method="post" action="register">
                 <table>
-                    <tr >
+                    <tr>
+                        <td><h2>Register as</h2></td>
+                        <td><select name="type">
+                                <option value="admin" selected="">Admin</option>
+                                <option value="doctor">Doctor</option>
+                                <option value="patient">Patient</option>
+                            </select></td>
+                    </tr> 
+                    <tr>
                         <td><h2>Email</h2></td>
-                        <td><input name="email" id="user" type="text" value="${requestScope.email}"/></td>
+                        <td><input name="email" id="user" type="text"/></td>
                     </tr>  
                     <tr>
                         <td><h2>Password</h2></td>
                         <td><input id="pass" name="pass" type="password"/></td>
                     </tr>
+                    <tr>
+                        <td><h2>Re-enter Password </h2></td>
+                        <td><input id="pass" name="repass" type="password"/></td>
+                    </tr>
                 </table>
-                <input type="submit" value="LOGIN">
+                <input type="submit" value="REGIGSTER">
                 <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er!=null}">${requestScope.er}</c:if></p>
                  <nav style="display: flex;width: 250px;padding-top: 20px;margin-left: 26%;"></nav>
                    </form>
-                 <a href="register"><button>REGISTER</button></a>
+                 <a href="/register"><button>REGISTER</button></a>
                 <nav style="display: flex;width: 400px;padding-top: 20px;margin-left: 26%;">
                  <a href="/forgot">Forgot password</a>
                 <a href="/change" style="margin-left: 60px;">change password</a></nav>

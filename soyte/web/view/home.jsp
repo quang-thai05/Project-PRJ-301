@@ -4,6 +4,7 @@
     Author     : quangthai
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,11 +80,15 @@
 			<li><a data-scroll href="#covid">Covid-19</a></li>
                         <li><a data-scroll href="#footer">Contact</a></li>
                         
-                        
-                        <li><a data-scroll >Welcome {}</a></li>
+                        <c:if test="${sessionScope.account != null}">
+                            <li><a data-scroll >Welcome ${sessionScope.userdetail.user_name}</a></li>
+                            <li><a data-scroll href="profile">Profile</a></li>
+                            <li><a data-scroll href="logout">Logout</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.account == null}">
                         <li><a data-scroll href="/soyte/login">Login</a></li>
-                        
-                        
+                        </c:if>
+
                      </ul>
                   </div>
                </nav>

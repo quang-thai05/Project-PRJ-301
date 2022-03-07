@@ -81,18 +81,26 @@
     </head>
     <body>
             <div class="frame" >
-                  <form method="post" action="login">
+                  <form method="post" action="change">
                 <table>
                     <tr >
                         <td><h2>Email</h2></td>
-                        <td><input name="email" id="user" type="text" value="${requestScope.email}"/></td>
+                        <td><input name="email" id="user" type="text" value="${sessionScope.account.email}"/></td>
                     </tr>  
                     <tr>
-                        <td><h2>Password</h2></td>
-                        <td><input id="pass" name="pass" type="password"/></td>
+                        <td><h2>Old password</h2></td>
+                        <td><input id="pass" name="oldpass" type="password"/></td>
+                    </tr>
+                    <tr>
+                        <td><h2>New password</h2></td>
+                        <td><input id="pass" name="newpass" type="password"/></td>
+                    </tr>
+                    <tr>
+                        <td><h2>Re-enter new password</h2></td>
+                        <td><input id="pass" name="renewpass" type="password"/></td>
                     </tr>
                 </table>
-                <input type="submit" value="LOGIN">
+                <input type="submit" value="Change-pass">
                 <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er!=null}">${requestScope.er}</c:if></p>
                  <nav style="display: flex;width: 250px;padding-top: 20px;margin-left: 26%;"></nav>
                    </form>

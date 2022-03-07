@@ -12,7 +12,7 @@ import java.sql.Date;
  * @author quangthai
  */
 public class UserDetail {
-    private String user_id;
+    private int user_id;
     private String user_name;
     private Date date_of_birth;
     private String address;
@@ -22,7 +22,7 @@ public class UserDetail {
     public UserDetail() {
     }
 
-    public UserDetail(String user_id, String user_name, Date date_of_birth, String address, String phone, String image) {
+    public UserDetail(int user_id, String user_name, Date date_of_birth, String address, String phone, String image) {
         this.user_id = user_id;
         this.user_name = user_name;
         this.date_of_birth = date_of_birth;
@@ -31,11 +31,11 @@ public class UserDetail {
         this.image = image;
     }
 
-    public String getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 

@@ -47,9 +47,5 @@ public class SendMail {
         }
     }
     public static void main(String[] args) {
-    String toEmail = "c9nguyenquanghieu@gmail.com";
-    String subject = "Thank you for using our service";
-    String text = "so y te nghe an";
-    new SendMail().sentEmail(toEmail, subject, text);
 }
 }
