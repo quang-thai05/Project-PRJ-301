@@ -12,7 +12,7 @@ import model.UserDetail;
 
 /**
  *
- * @author quangthai
+ * @author quang
  */
 public class UserDetailDBContext extends DBContext{
     public UserDetail getUserDetailByUserId(int id){

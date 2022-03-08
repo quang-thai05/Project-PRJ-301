@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import model.UserDetail;
 /**
  *
- * @author hoanganhPC
+ * @author quang
  */
 public class ProfileDBContext extends DBContext{
     public UserDetail getDetailbyid(int id){

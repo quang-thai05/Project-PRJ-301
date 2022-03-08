@@ -16,7 +16,7 @@ import model.User;
 
 /**
  *
- * @author quangthai
+ * @author quang
  */
 public class UserDBContext extends DBContext{
     

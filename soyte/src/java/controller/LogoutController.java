@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author quangthai
+ * @author quang
  */
 public class LogoutController extends HttpServlet {
 

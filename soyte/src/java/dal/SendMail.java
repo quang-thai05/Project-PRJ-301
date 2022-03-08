@@ -8,7 +8,7 @@ import java.util.Properties;
 
 /**
  *
- * @author anhdt
+ * @author quang
  */
 public class SendMail {
 

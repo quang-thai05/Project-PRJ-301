@@ -19,7 +19,7 @@ import model.UserDetail;
 
 /**
  *
- * @author quangthai
+ * @author quang
  */
 
 public class RegisterController extends HttpServlet {

@@ -28,7 +28,7 @@ import model.UserDetail;
 
 /**
  *
- * @author hoanganhPC
+ * @author quang
  */
 @WebServlet(name = "Updateprofile", urlPatterns = {"/update"})
 @MultipartConfig

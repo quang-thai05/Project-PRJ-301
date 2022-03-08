@@ -14,7 +14,7 @@ import model.Role;
 
 /**
  *
- * @author quangthai
+ * @author quang
  */
 public class RoleDBContext extends DBContext{
     public List<Role> getRoles(){

@@ -17,7 +17,7 @@ import model.UserDetail;
 
 /**
  *
- * @author hoanganhPC
+ * @author quang
  */
 public class ProfileController extends HttpServlet {
 
