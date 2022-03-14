@@ -1,7 +1,7 @@
 <%-- 
     Document   : denied
     Created on : Mar 5, 2022, 8:29:37 PM
-    Author     : quangthai
+    Author     : quang
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

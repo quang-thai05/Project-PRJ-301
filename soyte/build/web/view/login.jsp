@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : Feb 17, 2022, 7:11:24 PM
-    Author     : quangthai
+    Author     : quang
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,16 +15,16 @@
             body{
                 height: 97vh;
                 width: 98vw;
-                background-color: #0071d1;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                background-color: #31b0d5;
             }
             .frame{
                 border-radius: 10px;
                 background-color: #ffffff;
-                width: 100%;
-                height: 100%;
+                width: 550px;
+                height: 400px;
                 display: flex;
                 flex-direction: column;
             }
@@ -44,7 +44,7 @@
                 width: 20%;
             } 
             input{
-                width: 90%;
+                width: 300px;
                 height: 30px;
             }
             td{
@@ -77,6 +77,21 @@
             #id{
                 display: none;
             }
+            .login{
+                background-color: rgb(66, 66, 247);
+              width: 80px;  
+              margin-left: 157px;
+              margin-top: 12px;
+            }
+            .reg{
+                width: 80px;
+                text-decoration: none;
+                margin-top: 10px;
+                margin-left: 340px;
+            }
+            .reg button{
+                margin: 0;
+            }
         </style>
     </head>
     <body>
@@ -85,22 +100,30 @@
                 <table>
                     <tr >
                         <td><h2>Email</h2></td>
-                        <td><input name="email" id="user" type="text" value="${requestScope.email}"/></td>
+                        <td><input name="email" id="user" type="text"/></td>
                     </tr>  
                     <tr>
                         <td><h2>Password</h2></td>
                         <td><input id="pass" name="pass" type="password"/></td>
-                    </tr>
+                    </tr>    
                 </table>
-                <input type="submit" value="LOGIN">
+                      <input class="login" type="submit" value="LOGIN">
                 <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er!=null}">${requestScope.er}</c:if></p>
                  <nav style="display: flex;width: 250px;padding-top: 20px;margin-left: 26%;"></nav>
                    </form>
-                 <a href="register"><button>REGISTER</button></a>
-                <nav style="display: flex;width: 400px;padding-top: 20px;margin-left: 26%;">
-                 <a href="/forgot">Forgot password</a>
-                <a href="/change" style="margin-left: 60px;">change password</a></nav>
+                 <a class="reg" href="register"><button>REGISTER</button></a>
+                <nav style="display: flex;width: 400px;padding-top: 20px;margin-left: 29%;">
+                 <a href="forgot">Forgot password</a>
+                <a href="change" style="margin-left: 70px;">change password</a></nav>
+                <p style="color:red ;margin-top: 30px;margin-left: 15px;" id="h"></p>
             </div>
+                 <script>
+                     document.getElementsByClassName("login")[0].onclick =function (e){
+                         if(document.getElementById("pass").value.trim()===""||document.getElementById("user").value.trim()===""){
+                             e.preventDefault();
+                        document.getElementById("h").innerHTML="fill up information";}
+                     };
+                 </script>
     </body>
 </html>
 

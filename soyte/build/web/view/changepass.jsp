@@ -1,114 +1,85 @@
 <%-- 
-    Document   : login
-    Created on : Feb 17, 2022, 7:11:24 PM
-    Author     : quangthai
+    Document   : Changepass
+    Created on : Feb 25, 2022, 7:16:16 AM
+    Author     : quang
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style>
-            body{
-                height: 97vh;
-                width: 98vw;
-                background-color: #0071d1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .frame{
-                border-radius: 10px;
-                background-color: #ffffff;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-            }
-            form{
-                width: 40%;
-                height: 55%;  
-            }
-
-            h2{
-                width: 130px;
-                margin-left: 20px;
-            }
-            table{
-                margin-top: 45px;
-            }
-            tr td:nth-of-type(1){
-                width: 20%;
-            } 
-            input{
-                width: 90%;
-                height: 30px;
-            }
-            td{
-                padding-top: 15px;
-            }
-            button{
-                text-decoration: none;
-                color: black;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 30px;
-                width: 80px;
-                background-color: rgb(66, 66, 247);
-                margin-left: 120px;
-            }
-            button:hover{
-                background-color: rgb(157, 157, 197);
-            }
-            button:nth-of-type(1){
-                margin-right: 100px;
-            }
-            p{
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            #id{
-                display: none;
-            }
-        </style>
+        <title>Change Password</title>
     </head>
     <body>
-            <div class="frame" >
-                  <form method="post" action="change">
-                <table>
-                    <tr >
-                        <td><h2>Email</h2></td>
-                        <td><input name="email" id="user" type="text" value="${sessionScope.account.email}"/></td>
-                    </tr>  
-                    <tr>
-                        <td><h2>Old password</h2></td>
-                        <td><input id="pass" name="oldpass" type="password"/></td>
-                    </tr>
-                    <tr>
-                        <td><h2>New password</h2></td>
-                        <td><input id="pass" name="newpass" type="password"/></td>
-                    </tr>
-                    <tr>
-                        <td><h2>Re-enter new password</h2></td>
-                        <td><input id="pass" name="renewpass" type="password"/></td>
-                    </tr>
-                </table>
-                <input type="submit" value="Change-pass">
-                <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er!=null}">${requestScope.er}</c:if></p>
-                 <nav style="display: flex;width: 250px;padding-top: 20px;margin-left: 26%;"></nav>
-                   </form>
-                 <a href="register"><button>REGISTER</button></a>
-                <nav style="display: flex;width: 400px;padding-top: 20px;margin-left: 26%;">
-                 <a href="/forgot">Forgot password</a>
-                <a href="/change" style="margin-left: 60px;">change password</a></nav>
-            </div>
+        <style>
+            html,body{
+                height: 100vh;
+                width: 100vw;
+                overflow: hidden;
+            }
+            form{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcOBo_3RO7-VcS9ikjEldkdEJRN5wMC2xa9g&usqp=CAU");
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+            table{
+                background-color: white;
+                width: 500px;
+                border-radius: 10px;
+                padding-left: 25px;
+                
+            }
+            input{
+                height: 30px;
+                width: 250px;
+                margin-top: 20px;
+                border-radius: 5px;
+            }
+            </style>
+            <form action="change" method="post"> 
+            <table>
+                <tr>
+                    <td>email:</td>
+                    <td><input name="email" type="text" placeholder="enter your email"/></td>
+                </tr>
+             <tr>
+                    <td>old password:</td>
+                    <td><input name="oldpass" type="password" placeholder="old password"/></td>
+                </tr>
+                <tr>
+                    <td>new password:</td>
+                    <td><input name="newpass" type="password" placeholder="new password"/></td>
+                </tr>
+                <tr>
+                    <td>confirm password:</td>
+                    <td><input name="renewpass" type="password" placeholder="confirm password"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button style="width:90px;background-color: #66ffff;height: 30px;margin-top: 10px;border-radius: 5px;" class="save">save</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="color: red;"><c:if test="${er!=null}">${er}</c:if><c:if test="${er==null}"><p id="h"></p></c:if></td><!-- nếu thông tin không đúng out ra lỗi(sử lý bên servlet)-->
+                </tr>
+            </table>
+        </form>
+                
     </body>
+    <script>
+        document.getElementsByClassName("save")[0].onclick =function (e){
+            if(document.getElementsByName("oldpass")[0].value.trim()===""||document.getElementsByName("newpass")[0].value.trim()===""||
+               document.getElementsByName("renewpass")[0].value.trim()===""||document.getElementsByName("email")[0].value.trim()===""){
+           e.preventDefault();
+           
+           document.getElementById("h").innerHTML="fill up informations";
+            }
+        };
+    </script>
 </html>
-

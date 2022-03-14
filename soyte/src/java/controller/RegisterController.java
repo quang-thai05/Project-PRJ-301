@@ -21,7 +21,6 @@ import model.UserDetail;
  *
  * @author quang
  */
-
 public class RegisterController extends HttpServlet {
 
     /**
@@ -64,7 +63,6 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String type = request.getParameter("type");
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
         String repass = request.getParameter("repass");
@@ -79,36 +77,25 @@ public class RegisterController extends HttpServlet {
             request.setAttribute("er", error);
             request.getRequestDispatcher("view/register.jsp").forward(request, response);
         } else {
-            if (!pass.equals(repass)) {
-                error = "Confirm password fail, please enter again!";
-                request.setAttribute("er", error);
-                request.getRequestDispatcher("view/register.jsp").forward(request, response);
-            } else {
-                User user = new User();
-                user.setEmail(email);
-                user.setPassword(pass);
-                if (type.equals("admin") || type.equals("doctor")) {
+            
+                if (!pass.equals(repass)) {
+                    error = "Confirm password fail, please enter again!";
+                    request.setAttribute("er", error);
+                    request.getRequestDispatcher("view/register.jsp").forward(request, response);
+                } else {
+                    User user = new User();
+                    user.setEmail(email);
+                    user.setPassword(pass);
                     user.setActive(false);
-                    if (type.equals("admin")) {
-                        user.setRole_id(1);
-                    } else {
-                        user.setRole_id(2);
-                    }
                     user.setOTP(uDAO.generateOTP());
                     sm.sentEmail(email, "Nghe An health service department", "Your OTP is: " + user.getOTP());
-                } else {
-                    user.setActive(true);
-                    user.setRole_id(3);
+                    uDAO.createUser(user);
+                    udDAO.createUserDetail(new UserDetail());
+                    response.getWriter().print(user);
                 }
-                uDAO.createUser(user);
-                udDAO.createUserDetail(new UserDetail());
-            }
-            request.setAttribute("email", email);
-            if(type.equals("patient")){
-                request.getRequestDispatcher("view/login.jsp").forward(request, response);
-            }else{
+                request.setAttribute("email", email);
                 request.getRequestDispatcher("view/active.jsp").forward(request, response);
-            }
+            
         }
     }
 

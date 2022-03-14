@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package dal;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.UserDetail;
@@ -22,7 +24,7 @@ public class ProfileDBContext extends DBContext{
            p.setInt(1, id);
            ResultSet r=p.executeQuery();
            if(r.next())
-               return new UserDetail(id, r.getString("user_name"), r.getDate("date_of_birth"), r.getString("address"), r.getString("phone"), r.getString("image"));
+               return new UserDetail(id, r.getString("user_name"), r.getDate("date_of_birth"), r.getString("address"), r.getString("phone"), r.getString("image"), r.getInt("hospital_id"));
        }catch(Exception e){
            Logger.getLogger(ProfileDBContext.class.getName()).log(Level.SEVERE, null,e);
        }
@@ -33,7 +35,7 @@ public class ProfileDBContext extends DBContext{
         try{
            PreparedStatement p=connection.prepareStatement(sql);
            p.setString(1, u.getUser_name());
-           p.setDate(2, u.getDate_of_birth());
+           p.setDate(2, Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(u.getDate_of_birth())));
            p.setString(3, u.getAddress());
            p.setString(4, u.getPhone());
            p.setString(5, u.getImage());

@@ -49,14 +49,15 @@ public final class denied_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">\n");
       out.write("        <style>\n");
       out.write("            body{\n");
-      out.write("                background-color: black;\n");
+      out.write("                background-color: #66afe9;\n");
       out.write("                color: white;\n");
       out.write("            }\n");
       out.write("\n");
       out.write("            h1 {\n");
-      out.write("                color: red;\n");
+      out.write("                color: white;\n");
       out.write("            }\n");
       out.write("\n");
       out.write("            h6{\n");
@@ -71,10 +72,11 @@ public final class denied_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <hr class=\"w3-border-white w3-animate-left\" style=\"margin:auto;width:50%\">\n");
       out.write("            <h3 class=\"w3-center w3-animate-right\">You dont have permission to view this site.</h3>\n");
       out.write("            <h3 class=\"w3-center w3-animate-zoom\">🚫🚫🚫🚫</h3>\n");
-      out.write("            <h6 class=\"w3-center w3-animate-zoom\">error code:403 forbidden</h6>\n");
+      out.write("            <h6 class=\"w3-center w3-animate-zoom\">Please return to <a href=\"login\">Login</a> page</h6>\n");
       out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
+      out.write("\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

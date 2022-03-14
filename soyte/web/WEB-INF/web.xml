@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
-        <filter-name>filter</filter-name>
-        <filter-class>control.Filter</filter-class>
+        <filter-name>Filters</filter-name>
+        <filter-class>controller.Filters</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>filter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <filter-name>Filters</filter-name>
+        <url-pattern>/admindoc</url-pattern>
+        <url-pattern>/change-hospital</url-pattern>
+        <url-pattern>/create-document</url-pattern>
+        <url-pattern>/delete-document</url-pattern>
+        <url-pattern>/list-document</url-pattern>
+        <url-pattern>/update-document</url-pattern>
+        <url-pattern>/uptodoc</url-pattern>
+        <url-pattern>/uptopatient</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>LoginController</servlet-name>
@@ -40,6 +47,46 @@
         <servlet-name>ProfileController</servlet-name>
         <servlet-class>controller.ProfileController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminDocController</servlet-name>
+        <servlet-class>controller.AdminDocController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateToDoctorController</servlet-name>
+        <servlet-class>controller.UpdateToDoctorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateToPatient</servlet-name>
+        <servlet-class>controller.UpdateToPatient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateDocumentController</servlet-name>
+        <servlet-class>controller.CreateDocumentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateDocumentController</servlet-name>
+        <servlet-class>controller.UpdateDocumentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListDocumentController</servlet-name>
+        <servlet-class>controller.ListDocumentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteDocument</servlet-name>
+        <servlet-class>controller.DeleteDocument</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeHospitalController</servlet-name>
+        <servlet-class>controller.ChangeHospitalController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DocDocList</servlet-name>
+        <servlet-class>controller.DocDocList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewDocumentController</servlet-name>
+        <servlet-class>controller.ViewDocumentController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -71,6 +118,46 @@
     <servlet-mapping>
         <servlet-name>ProfileController</servlet-name>
         <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDocController</servlet-name>
+        <url-pattern>/admindoc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateToDoctorController</servlet-name>
+        <url-pattern>/uptodoc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateToPatient</servlet-name>
+        <url-pattern>/uptopatient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateDocumentController</servlet-name>
+        <url-pattern>/create-document</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateDocumentController</servlet-name>
+        <url-pattern>/update-document</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListDocumentController</servlet-name>
+        <url-pattern>/list-document</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteDocument</servlet-name>
+        <url-pattern>/delete-document</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeHospitalController</servlet-name>
+        <url-pattern>/change-hospital</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DocDocList</servlet-name>
+        <url-pattern>/doc-doclist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewDocumentController</servlet-name>
+        <url-pattern>/view-document</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -9,7 +9,7 @@ import java.sql.Date;
 
 /**
  *
- * @author quangthai
+ * @author quang
  */
 public class UserDetail {
     private int user_id;
@@ -18,17 +18,30 @@ public class UserDetail {
     private String address;
     private String phone;
     private String image;
+    private int hospital_id;
+    private int role_id;
 
     public UserDetail() {
     }
 
-    public UserDetail(int user_id, String user_name, Date date_of_birth, String address, String phone, String image) {
+    public UserDetail(int user_id, String user_name, Date date_of_birth, String address, String phone, String image, int hospital_id) {
         this.user_id = user_id;
         this.user_name = user_name;
         this.date_of_birth = date_of_birth;
         this.address = address;
         this.phone = phone;
         this.image = image;
+        this.hospital_id = hospital_id;
+    }
+    
+     public UserDetail(String user_name, Date date_of_birth, String address, String phone, String image, int hospital_id, int role_id) {
+        this.user_name = user_name;
+        this.date_of_birth = date_of_birth;
+        this.address = address;
+        this.phone = phone;
+         this.image = image;
+          this.hospital_id = hospital_id;
+          this.role_id = role_id;
     }
 
     public int getUser_id() {
@@ -79,8 +92,27 @@ public class UserDetail {
         this.image = image;
     }
 
+    public int getHospital_id() {
+        return hospital_id;
+    }
+
+    public void setHospital_id(int hospital_id) {
+        this.hospital_id = hospital_id;
+    }
+
     @Override
     public String toString() {
-        return "UserDetail{" + "user_id=" + user_id + ", user_name=" + user_name + ", date_of_birth=" + date_of_birth + ", address=" + address + ", phone=" + phone + ", image=" + image + '}';
+        return "UserDetail{" + "user_id=" + user_id + ", user_name=" + user_name + ", date_of_birth=" + date_of_birth + ", address=" + address + ", phone=" + phone + ", image=" + image + ", hospital_id=" + hospital_id + ", role_id=" + role_id + '}';
+    }
+    
+    
+ 
+
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
     }
 }

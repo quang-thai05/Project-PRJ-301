@@ -9,11 +9,10 @@ import dal.UserDBContext;
 
 /**
  *
- * @author quangthai
+ * @author quang
  */
 public class User {
     private int id;
-    private int role_id;
     private String email;
     private String password;
     private boolean active;
@@ -22,9 +21,8 @@ public class User {
     public User() {
     }
 
-    public User(int id, int role_id, String email, String password, boolean active, String OTP) {
+    public User(int id, String email, String password, boolean active, String OTP) {
         this.id = id;
-        this.role_id = role_id;
         this.email = email;
         this.password = password;
         this.active = active;
@@ -37,14 +35,6 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getRole_id() {
-        return role_id;
-    }
-
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
     }
 
     public String getEmail() {
@@ -81,6 +71,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", role_id=" + role_id + ", email=" + email + ", password=" + password + ", active=" + active + ", OTP=" + OTP + '}';
+        return "User{" + "id=" + id + ", email=" + email + ", password=" + password + ", active=" + active + ", OTP=" + OTP + '}';
     }
 }

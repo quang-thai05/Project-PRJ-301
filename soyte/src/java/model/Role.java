@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author quangthai
+ * @author quang
  */
 public class Role {
     private int role_id;

@@ -72,7 +72,7 @@ public class ForgotPassController extends HttpServlet {
                 String newpass = uDAO.generateRandomPassword();
                 uDAO.changePass(newpass, u.getId());
                 sm.sentEmail(email, "Nghe An health service department", "Your new password is: " + newpass);
-                error = "Your password has been reset, to to email to get your new password!";
+                error = "Your password has been reset, go to email to get your new password!";
                 request.setAttribute("er", error);
                 request.getRequestDispatcher("view/forgotpass.jsp").forward(request, response);
             } else {
