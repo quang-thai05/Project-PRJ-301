@@ -3,8 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/Class%20Folder/PRJ301/soyte/git/Project-PRJ-301/soyte/web/view/change-hospital.jsp</file>
+            <file>file:/E:/Class%20Folder/PRJ301/soyte/git/Project-PRJ-301/soyte/web/view/login.jsp</file>
+            <file>file:/E:/Class%20Folder/PRJ301/soyte/git/Project-PRJ-301/soyte/src/java/controller/LoginController.java</file>
+            <file>file:/E:/Class%20Folder/PRJ301/soyte/git/Project-PRJ-301/soyte/src/java/controller/CreateDocumentController.java</file>
             <file>file:/E:/Class%20Folder/PRJ301/soyte/git/Project-PRJ-301/soyte/src/java/dal/UserDBContext.java</file>
             <file>file:/E:/Class%20Folder/PRJ301/soyte/git/Project-PRJ-301/soyte/src/java/controller/ActiveController.java</file>
+            <file>file:/E:/Class%20Folder/PRJ301/soyte/git/Project-PRJ-301/soyte/web/view/profile.jsp</file>
+            <file>file:/E:/Class%20Folder/PRJ301/soyte/git/Project-PRJ-301/soyte/web/view/active.jsp</file>
+            <file>file:/E:/Class%20Folder/PRJ301/soyte/git/Project-PRJ-301/soyte/src/java/controller/ProfileController.java</file>
+            <file>file:/E:/Class%20Folder/PRJ301/soyte/git/Project-PRJ-301/soyte/web/view/list-document.jsp</file>
         </group>
     </open-files>
 </project-private>
