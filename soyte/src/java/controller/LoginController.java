@@ -60,6 +60,7 @@ public class LoginController extends HttpServlet {
       String pass = request.getParameter("pass");
       String error = "";
       int count = 0;
+      
       UserDBContext userDB = new UserDBContext();
       UserDetailDBContext udDB = new UserDetailDBContext();
       List<User> userList = userDB.getUsers();

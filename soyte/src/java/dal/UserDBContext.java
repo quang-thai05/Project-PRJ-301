@@ -122,8 +122,4 @@ public class UserDBContext extends DBContext {
       return sb.toString();
    }
 
-   public static void main(String[] args) {
-      //System.out.println(new UserDBContext().getUserByEmail("user@gmail.com"));
-      System.out.println(new UserDBContext().generateRandomPassword());
-   }
 }

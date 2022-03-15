@@ -53,11 +53,11 @@ public class ActiveController extends HttpServlet {
       String OTP = request.getParameter("otp");
       String error = "";
 
-      UserDBContext uDAO = new UserDBContext();
-      User user = uDAO.getUserByEmail(email);
+      UserDBContext userDB = new UserDBContext();
+      User user = userDB.getUserByEmail(email);
       if (user != null) {
          if (OTP.equals(user.getOTP())) {
-            uDAO.active(user.getId());
+            userDB.active(user.getId());
             error = "Active successful!";
             request.setAttribute("er", error);
             request.getRequestDispatcher("view/active.jsp").forward(request, response);
