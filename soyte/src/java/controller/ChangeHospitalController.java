@@ -40,7 +40,7 @@ public class ChangeHospitalController extends HttpServlet {
       List<Hospital> hospital = hosDB.getAllHospital();
       int id = Integer.parseInt(request.getParameter("id"));
       UserDetail ud = new UserDetailDBContext().getUserDetailByUserId(id);
-      request.setAttribute("u", ud);
+      request.setAttribute("ud", ud);
       request.setAttribute("hospital", hospital);
       request.getRequestDispatcher("view/change-hospital.jsp").forward(request, response);
    }
@@ -58,7 +58,8 @@ public class ChangeHospitalController extends HttpServlet {
            throws ServletException, IOException {
       int hospital_id = Integer.parseInt(request.getParameter("hospital"));
       int u_id = Integer.parseInt(request.getParameter("u_id"));
-      new UserDetailDBContext().changeHospital(hospital_id, u_id);
+      UserDetailDBContext udDB = new UserDetailDBContext();
+      udDB.changeHospital(hospital_id, u_id);
       response.sendRedirect("admindoc");
    }
 

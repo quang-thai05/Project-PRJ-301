@@ -26,40 +26,40 @@
                      <div class="img-circle text-center mb-3">
                         <img src="images/img/user2.jpg" alt="Image" class="shadow">
                      </div>
-                     <h4 class="text-center">${requestScope.u.user_name}</h4>
+                     <h4 class="text-center">${requestScope.ud.user_name}</h4>
                   </div>
                </div>
                <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                   <form action="change-hospital" method="post">
                      <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
                         <h3 class="mb-4">Account Information</h3>
-                        <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er!=null}">${requestScope.er}</c:if></p>
+                        <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er != null}">${requestScope.er}</c:if></p>
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group">
                                     <label>User Name</label>
-                                    <input type="text" class="form-control" value="${requestScope.u.user_name}" name="name" readonly="">
+                                    <input type="text" class="form-control" value="${requestScope.ud.user_name}" name="name" readonly="">
                               </div>
                            </div>
                            <div class="col-md-6">
                               <div class="form-group">
                                  <label>Address</label>
-                                 <input type="text" class="form-control" value="${requestScope.u.address}" name="address" readonly="">
+                                 <input type="text" class="form-control" value="${requestScope.ud.address}" name="address" readonly="">
                               </div>
                            </div>
                            <div class="col-md-6">
                               <div class="form-group">
                                  <label>Phone</label>
-                                 <input type="text" class="form-control" value="${requestScope.u.phone}" name="phone" readonly="">
+                                 <input type="text" class="form-control" value="${requestScope.ud.phone}" name="phone" readonly="">
                               </div>
                            </div>
                            <div class="col-md-6">
                               <div class="form-group">
                                  <label>BirthDay</label>
-                                 <input type="date" class="form-control" value="${requestScope.u.date_of_birth}" name="date" readonly="">
+                                 <input type="date" class="form-control" value="${requestScope.ud.date_of_birth}" name="date" readonly="">
                               </div>
                            </div>
-                           <input type="hidden" value="${requestScope.u.user_id}" name="u_id">
+                           <input type="hidden" value="${requestScope.ud.user_id}" name="u_id">
                            <div class="col-md-6">
                               <div class="form-group">
                                  <label>Hospital</label>
@@ -84,9 +84,9 @@
          </div>
       </section>
 
-
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
    </body>
 </html>

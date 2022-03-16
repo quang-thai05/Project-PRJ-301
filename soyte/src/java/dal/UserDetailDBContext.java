@@ -128,8 +128,4 @@ public class UserDetailDBContext extends DBContext {
       }
    }
 
-   public static void main(String[] args) {
-      System.out.println(new UserDetailDBContext().getUserDetailByUserId(1));
-   }
-
 }
