@@ -41,6 +41,8 @@ public class ChangeHospitalController extends HttpServlet {
       int id = Integer.parseInt(request.getParameter("id"));
       UserDetail ud = new UserDetailDBContext().getUserDetailByUserId(id);
       request.setAttribute("ud", ud);
+      Hospital h = hosDB.getById(ud.getHospital_id());
+      request.setAttribute("honame", h.getName());
       request.setAttribute("hospital", hospital);
       request.getRequestDispatcher("view/change-hospital.jsp").forward(request, response);
    }

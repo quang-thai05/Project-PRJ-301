@@ -39,10 +39,15 @@ public class Filters implements Filter {
         HttpSession session = httpRequest.getSession();
 
         UserDetail u = (UserDetail) session.getAttribute("userdetail");
-        if(u.getRole_id() != 1){
+        
+        if(u == null){
+            httpResponse.sendRedirect("login");
+        }else{
+            if(u.getRole_id() != 1){
             httpResponse.sendRedirect("denied.jsp");
         }else if(u.getRole_id() == 1){
             chain.doFilter(request, response);
+        } 
         }
     }
 

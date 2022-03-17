@@ -9,131 +9,51 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Login</title>
+      <title>Active</title>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <style>
-         body {
-            height: 97vh;
-            width: 98vw;
-            background-image: linear-gradient(#9999ff,#9999ff,#66ccff);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-         }
-
-         .d {
-            border-radius: 10px;
-            background-color: whitesmoke;
-            width: 550px;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-         }
-
-         form {
-            width: 40%;
-            height: 55%;  
-         }
-
-         h2 {
-            width: 130px;
-            margin-left: 20px;
-         }
-
-         table {
-            margin-top: 45px;
-         }
-
-         tr td:nth-of-type(1) {
-            width: 20%;
-         } 
-
-         input {
-            width: 300px;
-            height: 30px;
-         }
-
-         td {
-            padding-top: 15px;
-         }
-
-         button {
-            text-decoration: none;
-            color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 30px;
-            width: 80px;
-            background-color: rgb(66, 66, 247);
-            margin-left: 120px;
-         }
-
-         button:hover {
-            background-color: rgb(157, 157, 197);
-         }
-
-         button:nth-of-type(1) {
-            margin-right: 100px;
-         }
-
-         p {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-         }
-
-         #id {
-            display: none;
-         }
-
-         .login {
-            background-color: rgb(66, 66, 247);
-            width: 80px;  
-            margin-left: 157px;
-            margin-top: 12px;
-         }
-
-         .reg {
-            width: 80px;
-            text-decoration: none;
-            margin-top: 10px;
-            margin-left: 340px;
-         }
-
-         .reg button {
-            margin: 0;
-         }
-      </style>
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    </head>
    <body>
-      <div class="frame" >
-         <form method="POST"action="active">
-            <table>
-               <tr >
-                  <td><h2>Email</h2></td>
-                  <td><input name="email" id="user" type="text" value="${requestScope.email}"/></td>
-               </tr>  
-               <tr>
-                  <td><h2>OTP</h2></td>
-                  <td><input id="pass" name="otp" type="password"/></td>
-               </tr>
-            </table>
-            <input type="submit" value="ACTIVE" style="margin-left: 150px">
-            <p id="a" style="margin: 0; color: red;">
-               <c:if test="${requestScope.er != null}">${requestScope.er}</c:if>
-            </p>
-            <nav style="display: flex; width: 250px; padding-top: 20px; margin-left: 26%;"></nav>
-         </form>
-         <br><br><br>
-         <nav style="display: flex; width: 400px; padding-top: 20px; margin-left: 26%;">
-            <a href="forgot">Forgot password</a>
-            <a href="change" style="margin-left: 60px;">change password</a>
-            <a href="login" style="margin-left: 60px;">login</a></nav></nav>
+      <section class="vh-100" style="background-color: #508bfc;">
+         <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+               <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                  <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                     <div class="card-body p-5 text-center">
 
-   </div>
-</body>
+                        <h3 class="mb-5">Active</h3>
+                        <form method="post" action="active">
+
+                           <div class="form-outline mb-4">
+                              <label class="form-label" for="typeEmailX-2">Email</label>
+                              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" name="email" id="user"/>
+
+                           </div>
+
+                           <div class="form-outline mb-4">
+                              <label class="form-label" for="typePasswordX-2">OTP</label>
+                              <input type="text" id="typePasswordX-2" class="form-control form-control-lg" id="pass" name="otp"/>
+
+                           </div>
+
+                           <hr class="my-4">
+                           <button class="btn btn-primary btn-lg btn-block" class="login" type="submit">Active</button>
+                        </form>
+                        <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er!=null}">${requestScope.er}</c:if></p>
+                        <nav style="display: flex;width: 250px;padding-top: 20px;margin-left: 26%;"></nav>
+                        </form>
+                        <a class="reg" href="login"><button class="btn btn-primary btn-lg btn-block">Sign in</button></a>
+                        <nav style="display: flex;width: 400px;padding-top: 20px;margin-left: 10%;">
+                           <a href="forgot">Forgot password</a>
+                           <a href="change" style="margin-left: 70px;">change password</a></nav>
+                        <p style="color:red ;margin-top: 30px;margin-left: 15px;" id="h"></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </body>
 </html>
 

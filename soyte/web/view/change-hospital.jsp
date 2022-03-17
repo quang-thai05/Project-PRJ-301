@@ -11,7 +11,7 @@
 <html lang="en">
    <head>
       <meta charset="UTF-8">
-      <title>Account Settings UI Design</title>
+      <title>Change hospital</title>
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,7 +26,7 @@
                      <div class="img-circle text-center mb-3">
                         <img src="images/img/user2.jpg" alt="Image" class="shadow">
                      </div>
-                     <h4 class="text-center">${requestScope.ud.user_name}</h4>
+                     <h4 class="text-center">${requestScope.ud .user_name}</h4>
                   </div>
                </div>
                <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
@@ -62,7 +62,13 @@
                            <input type="hidden" value="${requestScope.ud.user_id}" name="u_id">
                            <div class="col-md-6">
                               <div class="form-group">
-                                 <label>Hospital</label>
+                                 <label>Recent Hospital</label>   
+                                 <input type="text" class="form-control" value="${requestScope.honame}" name="address" readonly="">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>New Hospital</label><br>
                                  <select name="hospital">
                                     <c:forEach items="${requestScope.hospital}" var="h">
                                        <option value="${h.id}">${h.name}</option>
@@ -87,6 +93,5 @@
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
    </body>
 </html>

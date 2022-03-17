@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <title>List Doctor & Patient</title>
+      <title>Admin</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -50,6 +50,7 @@
                                  <td>${l2.address}</td>
                                  <td>${l2.phone}</td>
                                  <td><a href="uptopatient?id=${l2.user_id}" class="btn btn-primary">To patient</a>&nbsp;<a href="change-hospital?id=${l2.user_id}" class="btn btn-primary">Change hospital</a></td>
+
                               </tr>
                            </c:forEach>
                         </tbody>
