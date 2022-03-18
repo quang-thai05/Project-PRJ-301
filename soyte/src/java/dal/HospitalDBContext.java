@@ -18,43 +18,44 @@ import model.Hospital;
  */
 public class HospitalDBContext extends DBContext {
 
-    public List<Hospital> getAllHospital() {
-        List<Hospital> list = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM [Hospital]";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            ResultSet rs = stm.executeQuery();
+   public List<Hospital> getAllHospital() {
+      List<Hospital> list = new ArrayList<>();
+      try {
+         String sql = "SELECT * FROM [Hospital]";
+         PreparedStatement stm = connection.prepareStatement(sql);
+         ResultSet rs = stm.executeQuery();
 
-            while (rs.next()) {
-                Hospital h = new Hospital();
-                h.setId(rs.getInt("hospital_id"));
-                h.setName(rs.getString("hospital_name"));
-                h.setAddress(rs.getString("hospital_address"));
-                list.add(h);
-            }
-        } catch (SQLException e) {
-        }
-        return list;
-    }
-    
-    public Hospital getById(int id){
-        try {
-            String sql = "SELECT * FROM [Hospital] where [hospital_id] = ?";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, id);
-            ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                Hospital h = new Hospital();
-                h.setId(rs.getInt("hospital_id"));
-                h.setName(rs.getString("hospital_name"));
-                h.setAddress(rs.getString("hospital_address"));
-                return h;
-            }
-        } catch (Exception e) {
-        }
-        return null;
-    }
-    public static void main(String[] args) {
-        System.out.println(new HospitalDBContext().getById(2));
-    }
+         while (rs.next()) {
+            Hospital h = new Hospital();
+            h.setId(rs.getInt("hospital_id"));
+            h.setName(rs.getString("hospital_name"));
+            h.setAddress(rs.getString("hospital_address"));
+            list.add(h);
+         }
+      } catch (SQLException e) {
+      }
+      return list;
+   }
+
+   public Hospital getById(int id) {
+      try {
+         String sql = "SELECT * FROM [Hospital] where [hospital_id] = ?";
+         PreparedStatement stm = connection.prepareStatement(sql);
+         stm.setInt(1, id);
+         ResultSet rs = stm.executeQuery();
+         while (rs.next()) {
+            Hospital h = new Hospital();
+            h.setId(rs.getInt("hospital_id"));
+            h.setName(rs.getString("hospital_name"));
+            h.setAddress(rs.getString("hospital_address"));
+            return h;
+         }
+      } catch (Exception e) {
+      }
+      return null;
+   }
+
+   public static void main(String[] args) {
+      System.out.println(new HospitalDBContext().getById(2));
+   }
 }

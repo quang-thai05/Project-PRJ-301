@@ -26,14 +26,16 @@
                      <div class="img-circle text-center mb-3">
                         <img src="images/img/user2.jpg" alt="Image" class="shadow">
                      </div>
-                     <h4 class="text-center">${requestScope.ud .user_name}</h4>
+                     <h4 class="text-center">${requestScope.ud.user_name}</h4>
                   </div>
                </div>
                <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                   <form action="change-hospital" method="post">
                      <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
                         <h3 class="mb-4">Account Information</h3>
-                        <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er != null}">${requestScope.er}</c:if></p>
+                        <p id="a" style="margin: 0;color: red;">
+                           <c:if test="${requestScope.er != null}">${requestScope.er}</c:if>
+                        </p>
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group">

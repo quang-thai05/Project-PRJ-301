@@ -27,31 +27,31 @@ import model.UserDetail;
  */
 public class Filters implements Filter {
 
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-    }
+   @Override
+   public void init(FilterConfig filterConfig) throws ServletException {
+   }
 
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-     HttpServletRequest httpRequest = (HttpServletRequest) request;
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
+   @Override
+   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+      HttpServletRequest httpRequest = (HttpServletRequest) request;
+      HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        HttpSession session = httpRequest.getSession();
+      HttpSession session = httpRequest.getSession();
 
-        UserDetail u = (UserDetail) session.getAttribute("userdetail");
-        
-        if(u == null){
-            httpResponse.sendRedirect("login");
-        }else{
-            if(u.getRole_id() != 1){
+      UserDetail u = (UserDetail) session.getAttribute("userdetail");
+
+      if (u == null) {
+         httpResponse.sendRedirect("login");
+      } else {
+         if (u.getRole_id() != 1) {
             httpResponse.sendRedirect("denied.jsp");
-        }else if(u.getRole_id() == 1){
+         } else if (u.getRole_id() == 1) {
             chain.doFilter(request, response);
-        } 
-        }
-    }
+         }
+      }
+   }
 
-    @Override
-    public void destroy() {
-    }
+   @Override
+   public void destroy() {
+   }
 }

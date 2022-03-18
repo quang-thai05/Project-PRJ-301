@@ -40,7 +40,9 @@
                            <hr class="my-4">
                            <button class="btn btn-primary btn-lg btn-block" value="submit" name="submit" type="submit">Forgot</button>
                         </form>
-                        <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er!=null}">${requestScope.er}</c:if></p>
+                        <p id="a" style="margin: 0;color: red;">
+                           <c:if test="${requestScope.er != null}">${requestScope.er}</c:if>
+                        </p>
                         <nav style="display: flex;width: 250px;padding-top: 20px;margin-left: 26%;"></nav>
                         </form>
                         <a class="reg" href="login"><button class="btn btn-primary btn-lg btn-block">Login</button></a>
