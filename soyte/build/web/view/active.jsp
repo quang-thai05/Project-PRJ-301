@@ -27,7 +27,7 @@
 
                            <div class="form-outline mb-4">
                               <label class="form-label" for="typeEmailX-2">Email</label>
-                              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" name="email" id="user"/>
+                              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" name="email" id="user" value="${requestScope.email}"/>
 
                            </div>
 
@@ -40,7 +40,6 @@
                            <hr class="my-4">
                            <button class="btn btn-primary btn-lg btn-block" class="login" type="submit">Active</button>
                         </form>
-                        <p id="a" style="margin: 0;color: red;"><c:if test="${requestScope.er!=null}">${requestScope.er}</c:if></p>
                         <nav style="display: flex;width: 250px;padding-top: 20px;margin-left: 26%;"></nav>
                         </form>
                         <a class="reg" href="login"><button class="btn btn-primary btn-lg btn-block">Sign in</button></a>

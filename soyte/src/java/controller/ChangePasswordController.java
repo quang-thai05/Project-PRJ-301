@@ -55,15 +55,15 @@ public class ChangePasswordController extends HttpServlet {
       String renewpass = request.getParameter("renewpass");
       String error = "";
 
-      UserDBContext uDAO = new UserDBContext();
-      UserDetailDBContext udDAO = new UserDetailDBContext();
-      User u = uDAO.getUserByEmail(email);
+      UserDBContext userDB = new UserDBContext();
+      UserDetailDBContext udDB = new UserDetailDBContext();
+      User u = userDB.getUserByEmail(email);
 
       if (u != null) {
          if (pass.equals(u.getPassword())) {
             if (newpass.equals(renewpass)) {
-               uDAO.changePass(newpass, u.getId());
-               UserDetail ud = udDAO.getUserDetailByUserId(u.getId());
+               userDB.changePass(newpass, u.getId());
+               UserDetail ud = udDB.getUserDetailByUserId(u.getId());
                HttpSession session = request.getSession();
                session.setAttribute("account", u);
                session.setAttribute("userdetail", ud);

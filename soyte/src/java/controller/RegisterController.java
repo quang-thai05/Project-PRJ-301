@@ -61,9 +61,8 @@ public class RegisterController extends HttpServlet {
       if (u != null) {
          error = "This email has been use, please enter again!";
          request.setAttribute("er", error);
-         request.getRequestDispatcher("view/register.jsp").forward(request, response);
+         request.getRequestDispatcher("view/register1.jsp").forward(request, response);
       } else {
-
          if (!pass.equals(repass)) {
             error = "Confirm password fail, please enter again!";
             request.setAttribute("er", error);
@@ -81,7 +80,6 @@ public class RegisterController extends HttpServlet {
          }
          request.setAttribute("email", email);
          request.getRequestDispatcher("view/active.jsp").forward(request, response);
-
       }
    }
 

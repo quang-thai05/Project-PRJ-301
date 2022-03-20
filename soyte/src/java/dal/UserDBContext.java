@@ -95,16 +95,6 @@ public class UserDBContext extends DBContext {
       }
    }
 
-   public void deActive(int id) {
-      try {
-         String sql = "UPDATE [User] SET [active] = 0 where [user_id] = ?";
-         PreparedStatement stm = connection.prepareStatement(sql);
-         stm.setInt(1, id);
-         stm.executeUpdate();
-      } catch (SQLException e) {
-      }
-   }
-
    public String generateOTP() {
       Random random = new Random();
       String otp = String.valueOf(100000 + random.nextInt(999999));
@@ -122,8 +112,4 @@ public class UserDBContext extends DBContext {
       return sb.toString();
    }
 
-   public static void main(String[] args) {
-      //System.out.println(new UserDBContext().getUserByEmail("user@gmail.com"));
-      System.out.println(new UserDBContext().generateRandomPassword());
-   }
 }

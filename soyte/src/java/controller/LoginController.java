@@ -78,7 +78,6 @@ public class LoginController extends HttpServlet {
                   request.setAttribute("er", error);
                   request.getRequestDispatcher("view/active.jsp").forward(request, response);
                }
-
             } else {
                error = "Wrong password!";
                request.setAttribute("er", error);
@@ -87,6 +86,7 @@ public class LoginController extends HttpServlet {
             count++;
          }
       }
+      
       if (count == 0) {
          error = "User not found!";
          request.setAttribute("er", error);

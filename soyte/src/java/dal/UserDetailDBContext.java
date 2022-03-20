@@ -76,7 +76,7 @@ public class UserDetailDBContext extends DBContext {
          stm.setString(3, ud.getAddress());
          stm.setString(4, ud.getPhone());
          stm.setString(5, ud.getImage());
-         stm.setInt(6, ud.getHospital_id());
+         stm.setInt(6, 1);
          stm.executeUpdate();
       } catch (SQLException e) {
       }
@@ -126,10 +126,6 @@ public class UserDetailDBContext extends DBContext {
          stm.executeUpdate();
       } catch (Exception e) {
       }
-   }
-
-   public static void main(String[] args) {
-      System.out.println(new UserDetailDBContext().getUserDetailByUserId(1));
    }
 
 }
