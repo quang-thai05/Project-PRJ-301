@@ -10,6 +10,7 @@ import dal.HospitalDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,12 +40,13 @@ public class UpdateDocumentController extends HttpServlet {
            throws ServletException, IOException {
       response.setContentType("text/html;charset=UTF-8");
       request.setCharacterEncoding("utf-8");
-      List<Hospital> hlist = new HospitalDBContext().getAllHospital();
+      ArrayList<Hospital> hlist = new HospitalDBContext().getAllHospital();
       request.setAttribute("hospital", hlist);
       int id = Integer.parseInt(request.getParameter("id"));
       HttpSession session = request.getSession();
       session.setAttribute("id", id);
-      Document d = new DocumentDBContext().getDocumentById(id);
+      DocumentDBContext docDB = new DocumentDBContext();
+      Document d = docDB.getDocumentById(id);
       request.setAttribute("document", d);
       request.getRequestDispatcher("view/edit-document.jsp").forward(request, response);
    }
@@ -77,7 +79,8 @@ public class UpdateDocumentController extends HttpServlet {
          HttpSession session = request.getSession();
          int id = (int) (session.getAttribute("id"));
 
-         new DocumentDBContext().updateDocument(d, id);
+         DocumentDBContext docDB = new DocumentDBContext();
+         docDB.updateDocument(d, id);
          response.sendRedirect("list-document");
       }
    }

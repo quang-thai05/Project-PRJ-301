@@ -11,7 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.UserDetail;
 
 /**
@@ -38,13 +39,14 @@ public class UserDetailDBContext extends DBContext {
             ud.setRole_id(rs.getInt("role_id"));
             return ud;
          }
-      } catch (SQLException e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDetailDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
       return null;
    }
 
-   public List<UserDetail> getUserDetailByRoleId(int role) {
-      List<UserDetail> list = new ArrayList<>();
+   public ArrayList<UserDetail> getUserDetailByRoleId(int role) {
+      ArrayList<UserDetail> list = new ArrayList<>();
       try {
          String sql = "SELECT * FROM [User_detail] where [role_id] = ? and [user_name] != ''";
          PreparedStatement stm = connection.prepareStatement(sql);
@@ -62,7 +64,8 @@ public class UserDetailDBContext extends DBContext {
             ud.setRole_id(rs.getInt("role_id"));
             list.add(ud);
          }
-      } catch (SQLException e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDetailDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
       return list;
    }
@@ -78,7 +81,8 @@ public class UserDetailDBContext extends DBContext {
          stm.setString(5, ud.getImage());
          stm.setInt(6, 1);
          stm.executeUpdate();
-      } catch (SQLException e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDetailDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
    }
 
@@ -93,7 +97,8 @@ public class UserDetailDBContext extends DBContext {
          stm.setString(5, ud.getImage());
          stm.setInt(6, id);
          stm.executeUpdate();
-      } catch (SQLException e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDetailDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
    }
 
@@ -103,7 +108,8 @@ public class UserDetailDBContext extends DBContext {
          PreparedStatement stm = connection.prepareStatement(sql);
          stm.setInt(1, id);
          stm.executeUpdate();
-      } catch (Exception e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDetailDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
    }
 
@@ -113,7 +119,8 @@ public class UserDetailDBContext extends DBContext {
          PreparedStatement stm = connection.prepareStatement(sql);
          stm.setInt(1, id);
          stm.executeUpdate();
-      } catch (Exception e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDetailDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
    }
 
@@ -124,7 +131,8 @@ public class UserDetailDBContext extends DBContext {
          stm.setInt(1, h_id);
          stm.setInt(2, u_id);
          stm.executeUpdate();
-      } catch (Exception e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDetailDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
    }
 

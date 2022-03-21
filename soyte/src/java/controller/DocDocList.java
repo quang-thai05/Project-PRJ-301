@@ -8,6 +8,7 @@ package controller;
 import dal.DocumentDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +40,8 @@ public class DocDocList extends HttpServlet {
       request.setCharacterEncoding("utf-8");
       HttpSession session = request.getSession();
       UserDetail ud = (UserDetail) session.getAttribute("userdetail");
-      List<DocumentHospital> list = new DocumentDBContext().getListByHospitalId(ud.getHospital_id());
+      DocumentDBContext docDB = new DocumentDBContext();
+      ArrayList<DocumentHospital> list = docDB.getListByHospitalId(ud.getHospital_id());
       request.setAttribute("document", list);
       request.getRequestDispatcher("view/doc-doclist.jsp").forward(request, response);
    }

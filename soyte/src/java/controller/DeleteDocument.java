@@ -32,7 +32,8 @@ public class DeleteDocument extends HttpServlet {
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
       int id = Integer.parseInt(request.getParameter("id"));
-      new DocumentDBContext().deleteDocument(id);
+      DocumentDBContext docDB = new DocumentDBContext();
+      docDB.deleteDocument(id);
       response.sendRedirect("list-document");
    }
 

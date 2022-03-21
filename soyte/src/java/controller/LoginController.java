@@ -9,6 +9,7 @@ import dal.UserDBContext;
 import dal.UserDetailDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -62,7 +63,7 @@ public class LoginController extends HttpServlet {
       int count = 0;
       UserDBContext userDB = new UserDBContext();
       UserDetailDBContext udDB = new UserDetailDBContext();
-      List<User> userList = userDB.getUsers();
+      ArrayList<User> userList = userDB.getUsers();
 
       for (User u : userList) {
          if (u.getEmail().equals(email)) {
@@ -86,7 +87,7 @@ public class LoginController extends HttpServlet {
             count++;
          }
       }
-      
+
       if (count == 0) {
          error = "User not found!";
          request.setAttribute("er", error);

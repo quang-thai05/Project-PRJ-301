@@ -10,8 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.User;
 
 /**
@@ -20,8 +21,8 @@ import model.User;
  */
 public class UserDBContext extends DBContext {
 
-   public List<User> getUsers() {
-      List<User> userList = new ArrayList<>();
+   public ArrayList<User> getUsers() {
+      ArrayList<User> userList = new ArrayList<>();
       try {
          String sql = "SELECT * FROM [User]";
 
@@ -36,7 +37,8 @@ public class UserDBContext extends DBContext {
             user.setOTP(rs.getString("OTP"));
             userList.add(user);
          }
-      } catch (SQLException e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
       return userList;
    }
@@ -56,7 +58,8 @@ public class UserDBContext extends DBContext {
             user.setOTP(rs.getString("OTP"));
             return user;
          }
-      } catch (SQLException e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
       return null;
    }
@@ -70,7 +73,8 @@ public class UserDBContext extends DBContext {
          stm.setBoolean(3, user.isActive());
          stm.setString(4, user.getOTP());
          stm.executeUpdate();
-      } catch (SQLException e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
    }
 
@@ -81,7 +85,8 @@ public class UserDBContext extends DBContext {
          stm.setString(1, password);
          stm.setInt(2, id);
          stm.executeUpdate();
-      } catch (SQLException e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
    }
 
@@ -91,7 +96,8 @@ public class UserDBContext extends DBContext {
          PreparedStatement stm = connection.prepareStatement(sql);
          stm.setInt(1, id);
          stm.executeUpdate();
-      } catch (SQLException e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
    }
 

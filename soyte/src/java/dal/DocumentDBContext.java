@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Document;
 import model.DocumentHospital;
 
@@ -19,8 +21,8 @@ import model.DocumentHospital;
  */
 public class DocumentDBContext extends DBContext {
 
-   public List<Document> getAll() {
-      List<Document> list = new ArrayList<>();
+   public ArrayList<Document> getAll() {
+      ArrayList<Document> list = new ArrayList<>();
       try {
          String sql = "SELECT * FROM Document";
          PreparedStatement stm = connection.prepareStatement(sql);
@@ -35,6 +37,7 @@ public class DocumentDBContext extends DBContext {
             list.add(d);
          }
       } catch (SQLException e) {
+         Logger.getLogger(DocumentDBContext.class.getName()).log(Level.SEVERE, null, e);
       }
       return list;
    }
@@ -49,6 +52,7 @@ public class DocumentDBContext extends DBContext {
          stm.setInt(4, d.getHospital_id());
          stm.executeUpdate();
       } catch (SQLException e) {
+         Logger.getLogger(DocumentDBContext.class.getName()).log(Level.SEVERE, null, e);
       }
    }
 
@@ -63,6 +67,7 @@ public class DocumentDBContext extends DBContext {
          stm.setInt(5, id);
          stm.executeUpdate();
       } catch (SQLException e) {
+         Logger.getLogger(DocumentDBContext.class.getName()).log(Level.SEVERE, null, e);
       }
    }
 
@@ -73,11 +78,12 @@ public class DocumentDBContext extends DBContext {
          stm.setInt(1, id);
          stm.executeUpdate();
       } catch (SQLException e) {
+         Logger.getLogger(DocumentDBContext.class.getName()).log(Level.SEVERE, null, e);
       }
    }
 
-   public List<DocumentHospital> getAllList2() {
-      List<DocumentHospital> list = new ArrayList();
+   public ArrayList<DocumentHospital> getAllList2() {
+      ArrayList<DocumentHospital> list = new ArrayList();
       try {
          String sql = "SELECT * FROM Document d join Hospital h ON d.hospital_id = h.hospital_id";
          PreparedStatement stm = connection.prepareStatement(sql);
@@ -93,12 +99,13 @@ public class DocumentDBContext extends DBContext {
             list.add(dh);
          }
       } catch (SQLException e) {
+         Logger.getLogger(DocumentDBContext.class.getName()).log(Level.SEVERE, null, e);
       }
       return list;
    }
 
-   public List<DocumentHospital> getListByHospitalId(int id) {
-      List<DocumentHospital> list = new ArrayList();
+   public ArrayList<DocumentHospital> getListByHospitalId(int id) {
+      ArrayList<DocumentHospital> list = new ArrayList();
       try {
          String sql = "SELECT * FROM Document d join Hospital h ON d.hospital_id = h.hospital_id where h.hospital_id = ?";
          PreparedStatement stm = connection.prepareStatement(sql);
@@ -115,6 +122,7 @@ public class DocumentDBContext extends DBContext {
             list.add(dh);
          }
       } catch (SQLException e) {
+         Logger.getLogger(DocumentDBContext.class.getName()).log(Level.SEVERE, null, e);
       }
       return list;
    }
@@ -135,11 +143,9 @@ public class DocumentDBContext extends DBContext {
             return d;
          }
       } catch (SQLException e) {
+         Logger.getLogger(DocumentDBContext.class.getName()).log(Level.SEVERE, null, e);
       }
       return null;
    }
 
-   public static void main(String[] args) {
-      System.out.println(new DocumentDBContext().getAllList2());
-   }
 }

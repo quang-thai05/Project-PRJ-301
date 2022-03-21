@@ -9,7 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Role;
 
 /**
@@ -18,8 +19,8 @@ import model.Role;
  */
 public class RoleDBContext extends DBContext {
 
-   public List<Role> getRoles() {
-      List<Role> roleList = new ArrayList<>();
+   public ArrayList<Role> getRoles() {
+      ArrayList<Role> roleList = new ArrayList<>();
       try {
          String sql = "SELECT * FROM [Role]";
          PreparedStatement stm = connection.prepareStatement(sql);
@@ -30,12 +31,10 @@ public class RoleDBContext extends DBContext {
             role.setRole_name(rs.getString("role_name"));
             roleList.add(role);
          }
-      } catch (SQLException e) {
+      } catch (SQLException ex) {
+         Logger.getLogger(RoleDBContext.class.getName()).log(Level.SEVERE, null, ex);
       }
       return roleList;
    }
 
-   public static void main(String[] args) {
-      System.out.println(new RoleDBContext().getRoles());
-   }
 }

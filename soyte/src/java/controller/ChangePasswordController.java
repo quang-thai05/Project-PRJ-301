@@ -50,7 +50,7 @@ public class ChangePasswordController extends HttpServlet {
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
       String email = request.getParameter("email");
-      String pass = request.getParameter("oldpass");
+      String oldpass = request.getParameter("oldpass");
       String newpass = request.getParameter("newpass");
       String renewpass = request.getParameter("renewpass");
       String error = "";
@@ -60,7 +60,7 @@ public class ChangePasswordController extends HttpServlet {
       User u = userDB.getUserByEmail(email);
 
       if (u != null) {
-         if (pass.equals(u.getPassword())) {
+         if (oldpass.equals(u.getPassword())) {
             if (newpass.equals(renewpass)) {
                userDB.changePass(newpass, u.getId());
                UserDetail ud = udDB.getUserDetailByUserId(u.getId());

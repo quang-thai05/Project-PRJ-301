@@ -37,8 +37,8 @@ public class AdminDocController extends HttpServlet {
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
       UserDetailDBContext udDB = new UserDetailDBContext();
-      List<UserDetail> list2 = udDB.getUserDetailByRoleId(2);
-      List<UserDetail> list3 = udDB.getUserDetailByRoleId(3);
+      ArrayList<UserDetail> list2 = udDB.getUserDetailByRoleId(2);
+      ArrayList<UserDetail> list3 = udDB.getUserDetailByRoleId(3);
       request.setAttribute("list2", list2);
       request.setAttribute("list3", list3);
       request.getRequestDispatcher("view/admindoctor.jsp").forward(request, response);

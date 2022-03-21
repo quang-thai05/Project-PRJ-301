@@ -35,7 +35,8 @@ public class ViewDocumentController extends HttpServlet {
       response.setContentType("text/html;charset=UTF-8");
       request.setCharacterEncoding("utf-8");
       int id = Integer.parseInt(request.getParameter("id"));
-      Document d = new DocumentDBContext().getDocumentById(id);
+      DocumentDBContext docDB = new DocumentDBContext();
+      Document d = docDB.getDocumentById(id);
       request.setAttribute("document", d);
       request.getRequestDispatcher("view/view-document.jsp").forward(request, response);
    }
@@ -51,7 +52,7 @@ public class ViewDocumentController extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
-      
+
    }
 
    /**

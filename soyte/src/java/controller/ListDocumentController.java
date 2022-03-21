@@ -8,6 +8,7 @@ package controller;
 import dal.DocumentDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +37,8 @@ public class ListDocumentController extends HttpServlet {
            throws ServletException, IOException {
       response.setContentType("text/html;charset=UTF-8");
       request.setCharacterEncoding("utf-8");
-      List<DocumentHospital> list = new DocumentDBContext().getAllList2();
+      DocumentDBContext docDB = new DocumentDBContext();
+      ArrayList<DocumentHospital> list = docDB.getAllList2();
       request.setAttribute("document", list);
       request.getRequestDispatcher("view/list-document.jsp").forward(request, response);
    }

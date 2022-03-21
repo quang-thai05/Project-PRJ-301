@@ -21,15 +21,23 @@ import model.UserDetail;
 public class ProfileDBContext extends DBContext {
 
    public UserDetail getDetailbyid(int id) {
-      String sql = "select * from User_detail where user_id=?";
       try {
+         String sql = "select * from User_detail where user_id=?";
          PreparedStatement p = connection.prepareStatement(sql);
          p.setInt(1, id);
          ResultSet r = p.executeQuery();
          if (r.next()) {
-            return new UserDetail(id, r.getString("user_name"), r.getDate("date_of_birth"), r.getString("address"), r.getString("phone"), r.getString("image"), r.getInt("hospital_id"));
+            UserDetail ud = new UserDetail();
+            ud.setUser_id(id);
+            ud.setUser_name(r.getString("user_name"));
+            ud.setDate_of_birth(r.getDate("date_of_birth"));
+            ud.setAddress(r.getString("address"));
+            ud.setPhone(r.getString("phone"));
+            ud.setImage(r.getString("image"));
+            ud.setHospital_id(r.getInt("hospital_id"));
+            return ud;
          }
-      } catch (Exception e) {
+      } catch (SQLException e) {
          Logger.getLogger(ProfileDBContext.class.getName()).log(Level.SEVERE, null, e);
       }
       return null;

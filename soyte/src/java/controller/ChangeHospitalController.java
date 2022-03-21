@@ -9,6 +9,7 @@ import dal.HospitalDBContext;
 import dal.UserDetailDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,9 +38,10 @@ public class ChangeHospitalController extends HttpServlet {
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
       HospitalDBContext hosDB = new HospitalDBContext();
-      List<Hospital> hospital = hosDB.getAllHospital();
+      ArrayList<Hospital> hospital = hosDB.getAllHospital();
       int id = Integer.parseInt(request.getParameter("id"));
-      UserDetail ud = new UserDetailDBContext().getUserDetailByUserId(id);
+      UserDetailDBContext udDB = new UserDetailDBContext();
+      UserDetail ud = udDB.getUserDetailByUserId(id);
       request.setAttribute("ud", ud);
       Hospital h = hosDB.getById(ud.getHospital_id());
       request.setAttribute("honame", h.getName());

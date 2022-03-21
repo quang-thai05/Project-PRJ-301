@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Hospital;
 
 /**
@@ -18,8 +20,8 @@ import model.Hospital;
  */
 public class HospitalDBContext extends DBContext {
 
-   public List<Hospital> getAllHospital() {
-      List<Hospital> list = new ArrayList<>();
+   public ArrayList<Hospital> getAllHospital() {
+      ArrayList<Hospital> list = new ArrayList<>();
       try {
          String sql = "SELECT * FROM [Hospital]";
          PreparedStatement stm = connection.prepareStatement(sql);
@@ -33,6 +35,7 @@ public class HospitalDBContext extends DBContext {
             list.add(h);
          }
       } catch (SQLException e) {
+         Logger.getLogger(HospitalDBContext.class.getName()).log(Level.SEVERE, null, e);
       }
       return list;
    }
@@ -50,12 +53,10 @@ public class HospitalDBContext extends DBContext {
             h.setAddress(rs.getString("hospital_address"));
             return h;
          }
-      } catch (Exception e) {
+      } catch (SQLException e) {
+         Logger.getLogger(HospitalDBContext.class.getName()).log(Level.SEVERE, null, e);
       }
       return null;
    }
 
-   public static void main(String[] args) {
-      System.out.println(new HospitalDBContext().getById(2));
-   }
 }
