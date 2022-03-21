@@ -10,6 +10,7 @@ import dal.HospitalDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +39,8 @@ public class CreateDocumentController extends HttpServlet {
            throws ServletException, IOException {
       response.setContentType("text/html;charset=UTF-8");
       request.setCharacterEncoding("utf-8");
-      List<Hospital> list = new HospitalDBContext().getAllHospital();
+      HospitalDBContext hosDB = new HospitalDBContext();
+      ArrayList<Hospital> list = hosDB.getAllHospital();
       request.setAttribute("hospital", list);
       request.getRequestDispatcher("view/create-document.jsp").forward(request, response);
    }
@@ -70,7 +72,8 @@ public class CreateDocumentController extends HttpServlet {
          int id = Integer.parseInt(h_id);
          Date date = Date.valueOf(sDate);
          Document d = new Document(title, body, date, id);
-         new DocumentDBContext().createDocument(d);
+         DocumentDBContext docDB = new DocumentDBContext();
+         docDB.createDocument(d);
          response.sendRedirect("list-document");
       }
    }
