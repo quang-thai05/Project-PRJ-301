@@ -73,7 +73,7 @@ public class ProfileController extends HttpServlet {
          request.getRequestDispatcher("view/profile.jsp").forward(request, response);
       } else {
          Date date2 = Date.valueOf(date);
-         UserDetail ud = new UserDetail(name, date2, address, phone, "image.jpg", 0, 3);
+         UserDetail ud = new UserDetail(name, date2, address, phone, "image.jpg", 1, 3);
          UserDetailDBContext udDB = new UserDetailDBContext();
          HttpSession session = request.getSession();
          User u = (User) session.getAttribute("account");
