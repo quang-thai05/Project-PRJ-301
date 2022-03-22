@@ -35,7 +35,7 @@
                         <h3 class="mb-4">Account Information</h3>
                         <p id="a" style="margin: 0;color: red;">
                            <c:if test="${requestScope.er != null}">${requestScope.er}</c:if>
-                        </p>
+                           </p>
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group">
